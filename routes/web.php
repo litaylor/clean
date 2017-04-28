@@ -11,6 +11,18 @@
 |
 */
 
+// Home route
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
+
+// ITEMS ROUTES
+// Collective (Show all items, create a new item)
+Route::get('/items', 'CleanItemController@index');
+Route::post('/items', 'CleanItemController@create');
+
+// Singular (Show an item, update an item, destroy an item)
+Route::get('/items/{id}', 'CleanItemController@show');
+Route::put('/items/{id}', 'CleanItemController@update');
+Route::delete('/items/{id}', 'CleanItemController@destroy');
