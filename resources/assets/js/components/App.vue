@@ -1,6 +1,5 @@
 <template>
     <div class="box">
-        This is App
         <Top></Top>
         <Communicator></Communicator>
     </div>

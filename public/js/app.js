@@ -1656,7 +1656,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -31742,7 +31741,7 @@ module.exports = function normalizeComponent (
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "box"
-  }, [_vm._v("\n    This is App\n    "), _c('Top'), _vm._v(" "), _c('Communicator')], 1)
+  }, [_c('Top'), _vm._v(" "), _c('Communicator')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -41828,10 +41827,12 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "box"
-  }, [_vm._v("\n  This is Top\n")])
-},staticRenderFns: []}
+  }, [_c('h1', [_vm._v("Clean")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -41853,6 +41854,11 @@ if (false) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -41900,6 +41906,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         title: title,
         type: type
       }).then(function (response) {}).catch(function (error) {});
+    },
+    putOne: function putOne(id, color, description, imgUrl, slug, tags, title, type) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/items/' + id, {
+        color: color,
+        description: description,
+        imgUrl: imgUrl,
+        slug: slug,
+        tags: tags,
+        title: title,
+        type: type
+      }).then(function (response) {}).catch(function (error) {});
+    },
+    uploadOne: function uploadOne() {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/imageupload');
+    },
+    deleteOne: function deleteOne(id) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('items/' + id, {}).then(function (response) {}).catch(function (error) {});
     }
   }
 });
@@ -41909,7 +41932,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(41)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 67 */
@@ -41989,8 +42012,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.postOne('#ffccaa', 'salmon shorts', 'salmonshorts.png', 'salmon-shorts', 'shorts,warm,casual', 'Salmon shorts', 'pants')
       }
     }
-  }, [_vm._v("POST")])])
-},staticRenderFns: []}
+  }, [_vm._v("POST")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
+    staticClass: "btn",
+    attrs: {
+      "type": "button",
+      "name": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.deleteOne(3)
+      }
+    }
+  }, [_vm._v("DELETE (one)")]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": "/imageupload"
+    }
+  }, [_c('button', {
+    staticClass: "btn",
+    attrs: {
+      "type": "button",
+      "name": "button"
+    }
+  }, [_vm._v("UPLOAD")])])
+}]}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

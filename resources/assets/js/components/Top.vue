@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="box">
-    This is Top
+    <h1>Clean</h1>
   </div>
 </template>
 

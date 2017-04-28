@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // IMAGE UPLOAD PLUGIN BY MATRIPHE
+        Matriphe\Imageupload\ImageuploadServiceProvider::class,
+
     ],
 
     /*
@@ -225,6 +228,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // IMAGE UPLOAD
+        'Imageupload' => Matriphe\Imageupload\ImageuploadFacade::class,
 
     ],
 

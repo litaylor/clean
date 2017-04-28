@@ -4,6 +4,11 @@
     <button type="button" name="button" class="btn" v-on:click="getAll()">GET (all)</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="getOne(1)">GET (one)</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="postOne('#ffccaa', 'salmon shorts', 'salmonshorts.png', 'salmon-shorts', 'shorts,warm,casual', 'Salmon shorts', 'pants')">POST</button>
+    <br /> <button type="button" name="button" class="btn" v-on:click="deleteOne(3)">DELETE (one)</button>
+    <br /> <a href="/imageupload"> <button type="button" name="button" class="btn">UPLOAD</button> </a> 
+    <br />
+    <br />
+
   </div>
 </template>
 
@@ -47,6 +52,37 @@ export default {
         tags: tags,
         title: title,
         type: type
+      })
+      .then((response) => {
+
+      })
+      .catch((error) => {
+
+      })
+    },
+    putOne (id, color, description, imgUrl, slug, tags, title, type) {
+      axios.put(('/items/'+id), {
+        color: color,
+        description: description,
+        imgUrl: imgUrl,
+        slug: slug,
+        tags: tags,
+        title: title,
+        type: type
+      })
+      .then((response) => {
+
+      })
+      .catch((error) => {
+
+      })
+    },
+    uploadOne () {
+      axios.get('/imageupload')
+    },
+    deleteOne (id) {
+      axios.delete('items/'+id, {
+
       })
       .then((response) => {
 

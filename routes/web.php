@@ -26,3 +26,18 @@ Route::post('/items', 'CleanItemController@create');
 Route::get('/items/{id}', 'CleanItemController@show');
 Route::put('/items/{id}', 'CleanItemController@update');
 Route::delete('/items/{id}', 'CleanItemController@destroy');
+
+// IMAGE UPLOADS
+Route::any('/imageupload', function()
+{
+    $data = [];
+
+    // echo config('imageupload.library');
+
+    if (Request::hasFile('file')) {
+        $data['result'] = Imageupload::upload(Request::file('file'));
+        return view('app');
+    }
+
+    return view('form')->with($data);
+});
