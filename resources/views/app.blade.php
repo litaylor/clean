@@ -21,8 +21,8 @@
         </style>
     </head>
     <body>
-      <?php if ($data)
-        print_r($data);
+      <?php if (array_key_exists('data', get_defined_vars()))
+        echo "<script>window.tempImgUrl ='".$data['original_filename']."';</script>";
       ?>
       <!-- Loads entire app -->
       <div id="app"></div>

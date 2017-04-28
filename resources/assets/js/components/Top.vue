@@ -6,6 +6,13 @@
 
 <script>
 export default {
+  // computed: {
+  //   tempImgUrl: function () {
+  //     if ($imgUrl) {
+  //       return { $imgUrl }
+  //     }
+  //   }
+  // },
   mounted() {
     console.log('Top component mounted.');
   }

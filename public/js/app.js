@@ -12482,13 +12482,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       newTitle: '',
       newDescription: '',
-      newTags: ''
+      newTags: '',
+      showImgPath: false
     };
   },
 
@@ -12497,10 +12499,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     isSlickPopulated: function isSlickPopulated() {
       var listLength = this.list.length;
       return listLength;
+    },
+    tempImgUrl: function tempImgUrl() {
+      return window.tempImgUrl;
     }
   },
   mounted: function mounted() {
-    // this.slickIt();
+    if (window.tempImgUrl.length > 0) {
+      this.showImgPath = true;
+    }
+    window.history.pushState('x', 'refreshed', '/clean');
   },
 
   watch: {
@@ -12508,6 +12516,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       console.log('list changed');
       console.log(this.list);
       this.slickIt();
+    },
+    tempImgUrl: function tempImgUrl() {
+      // console.log('tempImgUrl changed');
+      // if (tempImgUrl.length>0) {
+      //   this.showImgPath = true;
+      // }
     }
   },
   methods: {
@@ -12544,10 +12558,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // var theCurrentSlide = $('.slider-top').slick('slickCurrentSlide');
       this.slideToIt();
 
-      $('.slider-top').slick('slickAdd', '<div><div class="innerSlide"><h2 style="font-size:10px;">' + this.newTitle + '</h2></div></div>', 1);
+      $('.slider-top').slick('slickAdd', '<div style="background-size: cover; background-image:url(uploads/images/' + this.tempImgUrl + ')"><div class="innerSlide"><h2 style="font-size:10px;">' + this.newTitle + '</h2></div></div>', 1);
+
+      // POST
+
+      this.postNewItem();
 
       // erase new info
-      // POST
+
+      this.newTitle = '';
+      this.newDescription = '';
+      this.newTags = '';
+      // this.tempImgUrl='';
+      window.tempImgUrl = null;
+      this.showImgPath = false;
     },
     slideToIt: function slideToIt() {
       $('.slider-top').slick('slickGoTo', +2);
@@ -12569,6 +12593,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  // computed: {
+  //   tempImgUrl: function () {
+  //     if ($imgUrl) {
+  //       return { $imgUrl }
+  //     }
+  //   }
+  // },
   mounted: function mounted() {
     console.log('Top component mounted.');
   }
@@ -15042,7 +15073,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 47 */
@@ -35745,11 +35776,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.newTags = $event.target.value
       }
     }
-  }), _vm._v(" "), _c('a', {
+  }), _vm._v(" "), (!this.showImgPath) ? _c('a', {
     attrs: {
       "href": "/imageupload"
     }
-  }, [_vm._v("Upload image")]), _vm._v(" "), _c('button', {
+  }, [_vm._v("Upload image")]) : _vm._e(), _vm._v(" "), (this.showImgPath) ? _c('span', [_vm._v(" " + _vm._s(this.tempImgUrl) + " ")]) : _vm._e(), _vm._v(" "), _c('button', {
     staticClass: "btn",
     on: {
       "click": function($event) {

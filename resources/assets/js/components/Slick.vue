@@ -8,7 +8,8 @@
             <textarea v-model="newDescription" placeholder="A desciription of the item"></textarea>
             Tags:
             <textarea v-model="newTags" placeholder="warm, casual, athletic"></textarea>
-          <a href="/imageupload">Upload image</a>
+          <a v-if="!this.showImgPath" href="/imageupload">Upload image</a>
+          <span v-if="this.showImgPath"> {{ this.tempImgUrl }} </span>
           <button class="btn" v-on:click="addItem()">Submit</button>
           </div>
         </div>
@@ -54,7 +55,8 @@ export default {
     return {
       newTitle: '',
       newDescription: '',
-      newTags: ''
+      newTags: '',
+      showImgPath: false
     }
   },
   props: [
@@ -65,16 +67,28 @@ export default {
     isSlickPopulated: function () {
       var listLength=this.list.length;
       return listLength
-      }
+    },
+    tempImgUrl: function () {
+      return window.tempImgUrl
+    }
   },
   mounted() {
-    // this.slickIt();
+    if (window.tempImgUrl.length>0) {
+      this.showImgPath = true;
+    }
+    window.history.pushState('x', 'refreshed', '/clean');
   },
   watch: {
     list: function() {
       console.log('list changed');
       console.log(this.list);
       this.slickIt();
+    },
+    tempImgUrl: function() {
+      // console.log('tempImgUrl changed');
+      // if (tempImgUrl.length>0) {
+      //   this.showImgPath = true;
+      // }
     }
   },
   methods: {
@@ -114,11 +128,20 @@ export default {
       // var theCurrentSlide = $('.slider-top').slick('slickCurrentSlide');
       this.slideToIt();
 
-      $('.slider-top').slick('slickAdd','<div><div class="innerSlide"><h2 style="font-size:10px;">'+this.newTitle+'</h2></div></div>', 1);
+      $('.slider-top').slick('slickAdd','<div style="background-size: cover; background-image:url(uploads/images/'+this.tempImgUrl+')"><div class="innerSlide"><h2 style="font-size:10px;">'+this.newTitle+'</h2></div></div>', 1);
 
+      // POST
+
+      this.postNewItem();
 
       // erase new info
-      // POST
+
+      this.newTitle='';
+      this.newDescription='';
+      this.newTags='';
+      // this.tempImgUrl='';
+      window.tempImgUrl=null;
+      this.showImgPath=false;
     },
     slideToIt () {
       $('.slider-top').slick('slickGoTo',+2);
