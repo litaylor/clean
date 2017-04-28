@@ -5,16 +5,22 @@
     <br /> <button type="button" name="button" class="btn" v-on:click="getOne(1)">GET (one)</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="postOne('#ffccaa', 'salmon shorts', 'salmonshorts.png', 'salmon-shorts', 'shorts,warm,casual', 'Salmon shorts', 'pants')">POST</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="deleteOne(3)">DELETE (one)</button>
-    <br /> <a href="/imageupload"> <button type="button" name="button" class="btn">UPLOAD</button> </a> 
+    <br /> <a href="/imageupload"> <button type="button" name="button" class="btn">UPLOAD</button> </a>
     <br />
     <br />
+
+    <Closet :list="items"></Closet>
 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import Closet from './Closet';
 export default {
+  components: {
+    Closet
+  },
   data() {
     return {
       items: [],
@@ -22,7 +28,8 @@ export default {
     }
   },
   mounted() {
-    console.log('App component mounted.');
+    console.log('Communicator mounted.');
+    this.getAll();
   },
   methods: {
     getAll () {

@@ -11,14 +11,19 @@
         <script src="https://use.typekit.net/wqg3fwg.js"></script>
         <script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-        <!-- Styles -->
+        <!-- SLICK -->
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+
+        <!-- BOOTSTRAP -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
         <style>
-          
+
         </style>
     </head>
     <body>
       <!-- Loads entire app -->
       <div id="app"></div>
+
     </body>
     <footer>
       <script>
@@ -28,5 +33,6 @@
       </script>
       <link rel="stylesheet" href="{{ mix('css/app.css') }}">
       <script src="{{ mix('js/app.js') }}"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </footer>
 </html>
