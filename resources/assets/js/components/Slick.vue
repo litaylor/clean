@@ -10,7 +10,9 @@
         <div class="col-xs-12 col-sm-10">
           <div class="slider-top">
             <div v-for="item in list">
-              {{ item.slug }}
+              <div style="height:50px; width: 100%; background-color:#cccccc;"></div>
+              <h2 style="font-size:10px;">{{ item.title }}</h2>
+
             </div>
             <div>x</div>
             <div>y</div>
@@ -73,7 +75,7 @@ export default {
                 arrows: true,
                 centerMode: true,
                 centerPadding: '40px',
-                slidesToShow: 1
+                slidesToShow: 2
               }
             }
           ]

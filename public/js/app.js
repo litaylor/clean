@@ -4571,7 +4571,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
-exports.push([module.i, "\n.box {\n  border: thin solid #ccc;\n}\n", ""]);
+exports.push([module.i, "\nh1, h2, p {\n  font-family: paralucent;\n}\n.box {\n  border: thin solid #ccc;\n}\n.slick-slide {\n  text-align: center;\n}\n", ""]);
 
 /***/ }),
 /* 38 */
@@ -45368,6 +45368,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['list', 'whichRack'],
@@ -45413,7 +45415,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               arrows: true,
               centerMode: true,
               centerPadding: '40px',
-              slidesToShow: 1
+              slidesToShow: 2
             }
           }]
         });
@@ -45427,7 +45429,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(3)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 83 */
@@ -45483,7 +45485,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "slider-top"
   }, [_vm._l((_vm.list), function(item) {
-    return _c('div', [_vm._v("\n            " + _vm._s(item.slug) + "\n          ")])
+    return _c('div', [_c('div', {
+      staticStyle: {
+        "height": "50px",
+        "width": "100%",
+        "background-color": "#cccccc"
+      }
+    }), _vm._v(" "), _c('h2', {
+      staticStyle: {
+        "font-size": "10px"
+      }
+    }, [_vm._v(_vm._s(item.title))])])
   }), _vm._v(" "), _c('div', [_vm._v("x")]), _vm._v(" "), _c('div', [_vm._v("y")]), _vm._v(" "), _c('div', [_vm._v("z")]), _vm._v(" "), _c('div', [_vm._v("a")])], 2)])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {

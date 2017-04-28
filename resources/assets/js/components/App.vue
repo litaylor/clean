@@ -24,7 +24,13 @@
 </script>
 
 <style lang="css">
+  h1, h2, p {
+    font-family: paralucent;
+  }
   .box {
     border: thin solid #ccc;
+  }
+  .slick-slide {
+    text-align: center;
   }
 </style>
