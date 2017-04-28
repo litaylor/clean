@@ -21,6 +21,9 @@
         </style>
     </head>
     <body>
+      <?php if ($data)
+        print_r($data);
+      ?>
       <!-- Loads entire app -->
       <div id="app"></div>
 

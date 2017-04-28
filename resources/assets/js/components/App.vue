@@ -32,5 +32,11 @@
   }
   .slick-slide {
     text-align: center;
+    margin: 0 10px;
+    background-color: #dddddd;
+    height:180px;
+  }
+  .innerSlide {
+    
   }
 </style>

@@ -36,7 +36,7 @@ Route::any('/imageupload', function()
 
     if (Request::hasFile('file')) {
         $data['result'] = Imageupload::upload(Request::file('file'));
-        return view('app');
+        return view('app')->with('data',$data['result']);
     }
 
     return view('form')->with($data);
