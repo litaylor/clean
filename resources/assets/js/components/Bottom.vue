@@ -9,7 +9,7 @@
           <p><a href="/style">Style Guide</a></p>
         </div>
         <div class="col-md-4">
-          <p><a href="#">Documentation</a></p>
+          <p><a href="https://www.gitbook.com/book/litaylor/clean-app-api-documentation/details">Documentation</a></p>
         </div>
       </div>
     </div>

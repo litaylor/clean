@@ -35626,7 +35626,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col-md-4"
   }, [_c('p', [_c('a', {
     attrs: {
-      "href": "#"
+      "href": "https://www.gitbook.com/book/litaylor/clean-app-api-documentation/details"
     }
   }, [_vm._v("Documentation")])])])])])])
 }]}
