@@ -20,7 +20,7 @@ git clone https://github.com/litaylor/virtual-closet.git
 - Open http://localhost:8888 in your web browser
 - Enjoy!
 
-<p align="center"><img src="screenshot.png" height="300" width="auto"></p>
+<p align="center"><img src="screenshot.PNG" height="300" width="auto"></p>
 
 ## Documentation
 
