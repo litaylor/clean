@@ -41,3 +41,9 @@ Route::any('/imageupload', function()
 
     return view('form')->with($data);
 });
+
+// Style guide
+
+Route::get('/style', function () {
+    return view('style');
+});
