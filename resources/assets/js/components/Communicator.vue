@@ -1,13 +1,12 @@
 <template lang="html">
   <div class="box">
-    This is Communicator
+    <!-- This is Communicator
     <button type="button" name="button" class="btn" v-on:click="getAll()">GET (all)</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="getOne(1)">GET (one)</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="postOne('#ffccaa', 'salmon shorts', 'salmonshorts.png', 'salmon-shorts', 'shorts,warm,casual', 'Salmon shorts', 'pants')">POST</button>
     <br /> <button type="button" name="button" class="btn" v-on:click="deleteOne(3)">DELETE (one)</button>
     <br /> <a href="/imageupload"> <button type="button" name="button" class="btn">UPLOAD</button> </a>
-    <br />
-    <br />
+     -->
 
     <Closet :list="items"></Closet>
 

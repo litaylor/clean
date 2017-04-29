@@ -16,9 +16,10 @@
 
         <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-        <style>
 
-        </style>
+        <!-- Font Awesome -->
+        <script src="https://use.fontawesome.com/ebe4cf8802.js"></script>
+        
     </head>
     <body>
       <?php if (array_key_exists('data', get_defined_vars()))

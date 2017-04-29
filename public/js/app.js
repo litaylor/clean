@@ -12284,6 +12284,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {}
@@ -12297,7 +12308,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RackTop__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__RackTop___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__RackTop__);
-//
 //
 //
 //
@@ -12323,7 +12333,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Closet__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Closet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Closet__);
-//
 //
 //
 //
@@ -12474,23 +12483,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       newTitle: '',
+      newSlug: '',
       newDescription: '',
       newTags: '',
-      showImgPath: false
+      newType: '',
+      showImgPath: false,
+      closeWarning: ''
     };
   },
 
@@ -12505,10 +12508,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   mounted: function mounted() {
-    if (window.tempImgUrl.length > 0) {
-      this.showImgPath = true;
+    if (window.tempImgUrl) {
+      if (window.tempImgUrl.length > 0) {
+        this.showImgPath = true;
+      }
     }
-    window.history.pushState('x', 'refreshed', '/clean');
+    window.history.pushState('x', 'refreshed', '/');
   },
 
   watch: {
@@ -12530,6 +12535,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var mySlick = $('.slider-top');
         mySlick.slick({
           arrows: true,
+          // appendArrows: '.myArrows',
+          // prevArrow: '.my-prev',
+          // nextArrow: '.my-next',
+          swipeToSlide: true,
           centerMode: true,
           centerPadding: '60px',
           slidesToShow: 5,
@@ -12544,7 +12553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }, {
             breakpoint: 480,
             settings: {
-              arrows: true,
+              arrows: false,
               centerMode: true,
               centerPadding: '40px',
               slidesToShow: 1
@@ -12558,10 +12567,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // var theCurrentSlide = $('.slider-top').slick('slickCurrentSlide');
       this.slideToIt();
 
-      $('.slider-top').slick('slickAdd', '<div style="background-size: cover; background-image:url(uploads/images/' + this.tempImgUrl + ')"><div class="innerSlide"><h2 style="font-size:10px;">' + this.newTitle + '</h2></div></div>', 1);
+      $('.slider-top').slick('slickAdd', '<div style="background-size: cover; background-image:url(uploads/images/' + this.tempImgUrl + ')"><div class="innerSlide"><h2>' + this.newTitle + '</h2></div></div>', 1);
 
       // POST
-
+      this.newSlug = function () {
+        // from Peter Boughton at http://stackoverflow.com/questions/1053902/how-to-convert-a-title-to-a-url-slug-in-jquery
+        return this.newTitle.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+      };
       this.postNewItem();
 
       // erase new info
@@ -12569,12 +12581,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.newTitle = '';
       this.newDescription = '';
       this.newTags = '';
+      this.newType = '';
       // this.tempImgUrl='';
       window.tempImgUrl = null;
       this.showImgPath = false;
     },
     slideToIt: function slideToIt() {
       $('.slider-top').slick('slickGoTo', +2);
+    },
+    postNewItem: function postNewItem() {
+      axios.post('/items', {
+        description: this.newDescription,
+        imgUrl: this.tempImgUrl,
+        // slug: this.newSlug,
+        tags: this.newTags,
+        title: this.newTitle, //,
+        type: this.newType
+      }).then(function (response) {
+        console.log('Added ' + 'title');
+      }).catch(function (error) {});
+    },
+    destroy: function destroy(item, items) {
+      var x = $('.slider-top');
+      var theCurrentSlide = x.slick('slickCurrentSlide');
+      // console.log(theCurrentSlide);
+      // console.log(item,items);
+      var index = items.indexOf(item);
+      var tempId = item.id;
+      console.log(tempId);
+      x.slick('slickRemove', theCurrentSlide);
+      this.list.splice(index, 1);
+      axios.delete('items/' + tempId, {}).then(function (response) {
+        console.log('deleted');
+      }).catch(function (error) {
+        location.reload();
+      });
     }
   }
 });
@@ -12591,15 +12632,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // computed: {
-  //   tempImgUrl: function () {
-  //     if ($imgUrl) {
-  //       return { $imgUrl }
-  //     }
-  //   }
-  // },
   mounted: function mounted() {
     console.log('Top component mounted.');
   }
@@ -15038,21 +15076,21 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\nh1, h2, p {\n  font-family: paralucent;\n}\n.box {\n  border: thin solid #ccc;\n}\n.slick-slide {\n  text-align: center;\n  margin: 0 10px;\n  background-color: #dddddd;\n  height:180px;\n}\n.innerSlide {\n}\n", ""]);
+exports.push([module.i, "\nh1 {\n    font-size: 90px;\n    text-align: center;\n    font-weight: 100;\n    border-bottom: 5px solid #E38F00;\n}\nh2 {\n    font-size: 18px;\n    text-align: center;\n    font-weight: 400;\n}\nh1, h2, p {\n    font-family: paralucent;\n}\n.bar {\n    padding-top:24px;\n}\n.description {\n    color: #E38F00;\n    max-width: 480px;\n    margin: 0 auto;\n    font-size: 14px;\n    line-height: 18px;\n    padding: 0 12px;\n}\n.slick-slide {\n    text-align: center;\n    margin: 0 10px;\n    background-color: #dddddd;\n    background-size: cover;\n    height:240px;\n}\n.slick-slide h2 {\n    display: none;\n}\n.slick-slide:hover h2 {\n    display: block;\n    color: white;\n    background-color: rgba(0,0,0,0.5);\n    font-size: 40px;\n}\n.closeButton {\n    display: none;\n    position: absolute;\n    bottom: 0px;\n    /*text-align: center;*/\n    padding-left: 20px;\n}\na.closeButton:link,a.closeButton:visited,a.closeButton:active {\n    color: #E38F00;\n    text-decoration: none;\n    font-family: paralucent;\n}\na.closeButton:hover::after {\n    content: 'Delete'\n}\n.slick-center .closeButton {\n    display: block;\n}\n.uploadBox {\n    background-color: #E38F00;\n    height: 240px;\n    line-height: 72px;\n    padding: 12px 0;\n    margin:0;\n}\n.uploadBox {\n    font-family: paralucent;\n    color: white;\n    font-weight: 100;\n    font-size: 60px;\n    text-align: center;\n}\n.addNew a:link, .uploadBox a:active, .uploadBox a:visited, .uploadBox a:hover {\n    color: white;\n    text-decoration: none;\n}\na:hover h3 {\n    background-color: black;\n}\n.slick-arrow {\n  position: absolute;\n  z-index: 100;\n  top: 90px;\n  background: white;\n  border: none;\n  height: 60px;\n  padding: 0 20px;\n  line-height: 60px;\n  border-radius: 5px;\n}\n.slick-prev{\n  left: 5px;\n}\n.slick-next{\n  right: 5px;\n}\n.footer {\n  border-top: 5px solid #E38F00;\n  color: black;\n  padding-top: 24px;\n}\n.footer a:link,.footer a:visited,.footer a:active {\n  color: black;\n  text-decoration: none;\n}\n.footer a:hover {\n  color: #E38F00;\n  text-decoration: none;\n}\n\n\n", ""]);
 
 /***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 44 */
@@ -15066,14 +15104,14 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 47 */
@@ -35529,7 +35567,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "box"
-  }, [_c('h1', [_vm._v("Clean")])])
+  }, [_c('h1', [_vm._v("Clean")]), _vm._v(" "), _c('p', {
+    staticClass: "description"
+  }, [_vm._v("\n    Clean is your digital washing machine, closet, hamper, couch, or wherever else you keep your clothes. Upload a pic of your favorite shirt, or anything else, and browse your wardrobe. Never forget a fit again!\n  ")]), _vm._v(" "), _c('h2', [_vm._v("My clean fits:")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -35565,15 +35605,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "footer"
+  }, [_c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row text-center"
+  }, [_c('div', {
+    staticClass: "col-md-4"
   }, [_c('p', [_c('a', {
     attrs: {
       "href": "http://github.com/litaylor"
     }
-  }, [_vm._v("Created by Langston Taylor.")])]), _vm._v(" "), _c('p', [_c('a', {
+  }, [_vm._v("Created by Langston Taylor.")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('p', [_c('a', {
     attrs: {
       "href": "#"
     }
-  }, [_vm._v("Style Guide")])])])
+  }, [_vm._v("Style Guide")])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('p', [_c('a', {
+    attrs: {
+      "href": "#"
+    }
+  }, [_vm._v("Documentation")])])])])])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -35590,7 +35644,7 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "Closet"
-  }, [_vm._v("\n  I'm the Closet\n  "), _c('RackTop', {
+  }, [_c('RackTop', {
     attrs: {
       "list": _vm.list
     }
@@ -35633,68 +35687,12 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "box"
-  }, [_vm._v("\n  This is Communicator\n  "), _c('button', {
-    staticClass: "btn",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.getAll()
-      }
-    }
-  }, [_vm._v("GET (all)")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
-    staticClass: "btn",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.getOne(1)
-      }
-    }
-  }, [_vm._v("GET (one)")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
-    staticClass: "btn",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.postOne('#ffccaa', 'salmon shorts', 'salmonshorts.png', 'salmon-shorts', 'shorts,warm,casual', 'Salmon shorts', 'pants')
-      }
-    }
-  }, [_vm._v("POST")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
-    staticClass: "btn",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    },
-    on: {
-      "click": function($event) {
-        _vm.deleteOne(3)
-      }
-    }
-  }, [_vm._v("DELETE (one)")]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('Closet', {
+  }, [_c('Closet', {
     attrs: {
       "list": _vm.items
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('a', {
-    attrs: {
-      "href": "/imageupload"
-    }
-  }, [_c('button', {
-    staticClass: "btn",
-    attrs: {
-      "type": "button",
-      "name": "button"
-    }
-  }, [_vm._v("UPLOAD")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -35715,9 +35713,47 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-xs-12 col-sm-2"
+    staticClass: "col-xs-12 col-sm-9 col-sm-push-3 bar"
+  }, [_c('div', {
+    staticClass: "slider-top"
+  }, _vm._l((_vm.list), function(item) {
+    return _c('div', {
+      style: ({
+        'background-image': 'url(uploads/images/' + item.imgUrl + ')'
+      })
+    }, [_c('div', {
+      staticClass: "innerSlide"
+    }, [_c('div'), _vm._v(" "), _c('h2', [_vm._v(_vm._s(item.title))]), _vm._v(" "), _c('a', {
+      staticClass: "closeButton",
+      attrs: {
+        "href": "#"
+      },
+      on: {
+        "click": function($event) {
+          _vm.destroy(item, _vm.list)
+        }
+      }
+    }, [_c('i', {
+      staticClass: "fa fa-window-close",
+      attrs: {
+        "aria-hidden": "true"
+      }
+    }), _vm._v(" " + _vm._s(this.closeWarning) + " ")])])])
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "col-xs-12 col-sm-3 col-sm-pull-9 bar"
   }, [_c('div', {
     staticClass: "addNew"
+  }, [(!this.showImgPath) ? _c('a', {
+    attrs: {
+      "href": "/imageupload"
+    }
+  }, [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c('br'), _vm._v(" "), (this.showImgPath) ? _c('span', [_vm._v(" " + _vm._s(this.tempImgUrl) + " ")]) : _vm._e(), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (this.showImgPath),
+      expression: "this.showImgPath"
+    }]
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -35757,7 +35793,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.newDescription = $event.target.value
       }
     }
-  }), _vm._v("\n          Tags:\n          "), _c('textarea', {
+  }), _vm._v("\n            Tags:\n            "), _c('textarea', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -35776,52 +35812,41 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.newTags = $event.target.value
       }
     }
-  }), _vm._v(" "), (!this.showImgPath) ? _c('a', {
-    attrs: {
-      "href": "/imageupload"
+  }), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.newType),
+      expression: "newType"
+    }],
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.newType = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
     }
-  }, [_vm._v("Upload image")]) : _vm._e(), _vm._v(" "), (this.showImgPath) ? _c('span', [_vm._v(" " + _vm._s(this.tempImgUrl) + " ")]) : _vm._e(), _vm._v(" "), _c('button', {
+  }, [_c('option', {
+    attrs: {
+      "disabled": "",
+      "value": ""
+    }
+  }, [_vm._v("Pick a type")]), _vm._v(" "), _c('option', [_vm._v("Top")]), _vm._v(" "), _c('option', [_vm._v("Bottom")]), _vm._v(" "), _c('option', [_vm._v("Footwear")])]), _vm._v(" "), _c('button', {
     staticClass: "btn",
     on: {
       "click": function($event) {
         _vm.addItem()
       }
     }
-  }, [_vm._v("Submit")])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-xs-12 col-sm-10"
-  }, [_c('div', {
-    staticClass: "slider-top"
-  }, [_vm._l((_vm.list), function(item) {
-    return _c('div', [_c('div', {
-      staticClass: "innerSlide"
-    }, [_c('div', {
-      staticStyle: {
-        "height": "50px",
-        "width": "100%",
-        "background-color": "#cccccc"
-      }
-    }), _vm._v(" "), _c('h2', {
-      staticStyle: {
-        "font-size": "10px"
-      }
-    }, [_vm._v(_vm._s(item.title))])])])
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _vm._m(1), _vm._v(" "), _vm._m(2), _vm._v(" "), _vm._m(3)], 2)])])])])
+  }, [_vm._v("Submit")])])])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "innerSlide"
-  }, [_vm._v("\n              x\n            ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "innerSlide"
-  }, [_vm._v("\n              y\n            ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "innerSlide"
-  }, [_vm._v("\n              z\n            ")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('div', {
-    staticClass: "innerSlide"
-  }, [_vm._v("\n              ayyyy\n            ")])])
+  return _c('h3', {
+    staticClass: "uploadBox"
+  }, [_vm._v("Upload"), _c('br'), _vm._v("clean"), _c('br'), _vm._v("fit")])
 }]}
 module.exports.render._withStripped = true
 if (false) {

@@ -24,19 +24,120 @@
 </script>
 
 <style lang="css">
+  h1 {
+    font-size: 90px;
+    text-align: center;
+    font-weight: 100;
+    border-bottom: 5px solid #E38F00;
+  }
+  h2 {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 400;
+  }
   h1, h2, p {
     font-family: paralucent;
   }
-  .box {
-    border: thin solid #ccc;
+  .bar {
+    padding-top:24px;
+  }
+  .description {
+    color: #E38F00;
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 0 12px;
   }
   .slick-slide {
     text-align: center;
     margin: 0 10px;
     background-color: #dddddd;
-    height:180px;
+    background-size: cover;
+    height:240px;
   }
-  .innerSlide {
-    
+  .slick-slide h2 {
+    display: none;
   }
+  .slick-slide:hover h2 {
+    display: block;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 40px;
+  }
+  .closeButton {
+    display: none;
+    position: absolute;
+    bottom: 0px;
+    /*text-align: center;*/
+    padding-left: 20px;
+  }
+  a.closeButton:link,a.closeButton:visited,a.closeButton:active {
+    color: #E38F00;
+    text-decoration: none;
+    font-family: paralucent;
+  }
+  a.closeButton:hover::after {
+    content: 'Delete'
+  }
+  .slick-center .closeButton {
+    display: block;
+  }
+  .uploadBox {
+    background-color: #E38F00;
+    height: 240px;
+    line-height: 72px;
+    padding: 12px 0;
+    margin:0;
+  }
+  .uploadBox {
+    font-family: paralucent;
+    color: white;
+    font-weight: 100;
+    font-size: 60px;
+    text-align: center;
+  }
+  .addNew a:link, .uploadBox a:active, .uploadBox a:visited, .uploadBox a:hover {
+    color: white;
+    text-decoration: none;
+  }
+  a:hover h3 {
+    background-color: black;
+  }
+
+.slick-arrow {
+  position: absolute;
+  z-index: 100;
+  top: 90px;
+  background: white;
+  border: none;
+  height: 60px;
+  padding: 0 20px;
+  line-height: 60px;
+  border-radius: 5px;
+}
+.slick-prev{
+  left: 5px;
+}
+.slick-next{
+  right: 5px;
+}
+
+.footer {
+  border-top: 5px solid #E38F00;
+  color: black;
+  padding-top: 24px;
+}
+
+.footer a:link,.footer a:visited,.footer a:active {
+  color: black;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #E38F00;
+  text-decoration: none;
+}
+
+
 </style>

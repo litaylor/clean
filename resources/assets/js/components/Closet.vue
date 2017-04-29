@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="Closet">
-    I'm the Closet
     <RackTop :list="list"></RackTop>
   </div>
 </template>

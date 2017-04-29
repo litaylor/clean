@@ -1,7 +1,18 @@
 <template lang="html">
   <div class="footer">
-    <p><a href="http://github.com/litaylor">Created by Langston Taylor.</a></p>
-    <p><a href="#">Style Guide</a></p>
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <p><a href="http://github.com/litaylor">Created by Langston Taylor.</a></p>
+        </div>
+        <div class="col-md-4">
+          <p><a href="#">Style Guide</a></p>
+        </div>
+        <div class="col-md-4">
+          <p><a href="#">Documentation</a></p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
