@@ -21,7 +21,7 @@
             <div v-show="this.showImgPath">
               <input type="text" placeholder="Title" v-model="newTitle">
               <textarea v-model="newDescription" placeholder="A desciription of the item"></textarea>
-              Tags:
+              <p>Tags:</p>
               <textarea v-model="newTags" placeholder="warm, casual, athletic"></textarea>
               <select v-model="newType">
                 <option disabled value="">Pick a type</option>
@@ -29,7 +29,8 @@
                 <option>Bottom</option>
                 <option>Footwear</option>
               </select>
-              <button class="btn" v-on:click="addItem()">Submit</button>
+              <br />
+              <button class="mybutton small" v-on:click="addItem()">Submit</button>
             </div>
           </div>
         </div>

@@ -76,7 +76,7 @@
       </div>
       <a href="/">
         <div class="back">
-          <h2>Back</h2>
+          <h2><i class="fa fa-reply" aria-hidden="true"></i></h2>
         </div>
       </a>
     </body>

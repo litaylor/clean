@@ -139,5 +139,64 @@
   text-decoration: none;
 }
 
+input, textarea {
+  display: block;
+  border-width: 0px 0px 5px;
+  border-style: solid;
+  border-color: #054096;
+  outline: none;
+  padding-left: 6px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+input:focus {
+  background-color: #E38F00;
+  color: white;
+}
+
+input:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+input:focus::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+input:focus:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+
+textarea:focus {
+  background-color: #E38F00;
+  color: white;
+}
+
+select {
+  border-width: 0px 0px 5px;
+  border-style: solid;
+  border-color: #054096;
+  outline: none;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+
+.mybutton {
+  padding: 12px;
+  background-color: #E38F00;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 900;
+  border: none;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.mybutton:hover{
+  color: white;
+}
+
+.mybutton.small {
+  width: 120px;
+}
 
 </style>

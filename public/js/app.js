@@ -12483,6 +12483,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -15076,7 +15077,7 @@ if (typeof jQuery === 'undefined') {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\nh1 {\n    font-size: 90px;\n    text-align: center;\n    font-weight: 100;\n    border-bottom: 5px solid #E38F00;\n}\nh2 {\n    font-size: 18px;\n    text-align: center;\n    font-weight: 400;\n}\nh1, h2, p {\n    font-family: paralucent;\n}\n.bar {\n    padding-top:24px;\n}\n.description {\n    color: #E38F00;\n    max-width: 480px;\n    margin: 0 auto;\n    font-size: 14px;\n    line-height: 18px;\n    padding: 0 12px;\n}\n.slick-slide {\n    text-align: center;\n    margin: 0 10px;\n    background-color: #dddddd;\n    background-size: cover;\n    height:240px;\n}\n.slick-slide h2 {\n    display: none;\n}\n.slick-slide:hover h2 {\n    display: block;\n    color: white;\n    background-color: rgba(0,0,0,0.5);\n    font-size: 40px;\n}\n.closeButton {\n    display: none;\n    position: absolute;\n    bottom: 0px;\n    /*text-align: center;*/\n    padding-left: 20px;\n}\na.closeButton:link,a.closeButton:visited,a.closeButton:active {\n    color: #E38F00;\n    text-decoration: none;\n    font-family: paralucent;\n}\na.closeButton:hover::after {\n    content: 'Delete'\n}\n.slick-center .closeButton {\n    display: block;\n}\n.uploadBox {\n    background-color: #E38F00;\n    height: 240px;\n    line-height: 72px;\n    padding: 12px 0;\n    margin:0;\n}\n.uploadBox {\n    font-family: paralucent;\n    color: white;\n    font-weight: 100;\n    font-size: 60px;\n    text-align: center;\n}\n.addNew a:link, .uploadBox a:active, .uploadBox a:visited, .uploadBox a:hover {\n    color: white;\n    text-decoration: none;\n}\na:hover h3 {\n    background-color: black;\n}\n.slick-arrow {\n  position: absolute;\n  z-index: 100;\n  top: 90px;\n  background: white;\n  border: none;\n  height: 60px;\n  padding: 0 20px;\n  line-height: 60px;\n  border-radius: 5px;\n}\n.slick-prev{\n  left: 5px;\n}\n.slick-next{\n  right: 5px;\n}\n.footer {\n  border-top: 5px solid #E38F00;\n  color: black;\n  padding-top: 24px;\n}\n.footer a:link,.footer a:visited,.footer a:active {\n  color: black;\n  text-decoration: none;\n}\n.footer a:hover {\n  color: #E38F00;\n  text-decoration: none;\n}\n\n\n", ""]);
+exports.push([module.i, "\nh1 {\n    font-size: 90px;\n    text-align: center;\n    font-weight: 100;\n    border-bottom: 5px solid #E38F00;\n}\nh2 {\n    font-size: 18px;\n    text-align: center;\n    font-weight: 400;\n}\nh1, h2, p {\n    font-family: paralucent;\n}\n.bar {\n    padding-top:24px;\n}\n.description {\n    color: #E38F00;\n    max-width: 480px;\n    margin: 0 auto;\n    font-size: 14px;\n    line-height: 18px;\n    padding: 0 12px;\n}\n.slick-slide {\n    text-align: center;\n    margin: 0 10px;\n    background-color: #dddddd;\n    background-size: cover;\n    height:240px;\n}\n.slick-slide h2 {\n    display: none;\n}\n.slick-slide:hover h2 {\n    display: block;\n    color: white;\n    background-color: rgba(0,0,0,0.5);\n    font-size: 40px;\n}\n.closeButton {\n    display: none;\n    position: absolute;\n    bottom: 0px;\n    /*text-align: center;*/\n    padding-left: 20px;\n}\na.closeButton:link,a.closeButton:visited,a.closeButton:active {\n    color: #E38F00;\n    text-decoration: none;\n    font-family: paralucent;\n}\na.closeButton:hover::after {\n    content: 'Delete'\n}\n.slick-center .closeButton {\n    display: block;\n}\n.uploadBox {\n    background-color: #E38F00;\n    height: 240px;\n    line-height: 72px;\n    padding: 12px 0;\n    margin:0;\n}\n.uploadBox {\n    font-family: paralucent;\n    color: white;\n    font-weight: 100;\n    font-size: 60px;\n    text-align: center;\n}\n.addNew a:link, .uploadBox a:active, .uploadBox a:visited, .uploadBox a:hover {\n    color: white;\n    text-decoration: none;\n}\na:hover h3 {\n    background-color: black;\n}\n.slick-arrow {\n  position: absolute;\n  z-index: 100;\n  top: 90px;\n  background: white;\n  border: none;\n  height: 60px;\n  padding: 0 20px;\n  line-height: 60px;\n  border-radius: 5px;\n}\n.slick-prev{\n  left: 5px;\n}\n.slick-next{\n  right: 5px;\n}\n.footer {\n  border-top: 5px solid #E38F00;\n  color: black;\n  padding-top: 24px;\n}\n.footer a:link,.footer a:visited,.footer a:active {\n  color: black;\n  text-decoration: none;\n}\n.footer a:hover {\n  color: #E38F00;\n  text-decoration: none;\n}\ninput, textarea {\n  display: block;\n  border-width: 0px 0px 5px;\n  border-style: solid;\n  border-color: #054096;\n  outline: none;\n  padding-left: 6px;\n  margin-top: 12px;\n  margin-bottom: 12px;\n}\ninput:focus {\n  background-color: #E38F00;\n  color: white;\n}\ninput:focus::-webkit-input-placeholder { /* Chrome/Opera/Safari */\n  color: white;\n}\ninput:focus::-moz-placeholder { /* Firefox 19+ */\n  color: white;\n}\ninput:focus:-ms-input-placeholder { /* IE 10+ */\n  color: white;\n}\ntextarea:focus {\n  background-color: #E38F00;\n  color: white;\n}\nselect {\n  border-width: 0px 0px 5px;\n  border-style: solid;\n  border-color: #054096;\n  outline: none;\n  margin-top: 12px;\n  margin-bottom: 12px;\n}\n.mybutton {\n  padding: 12px;\n  background-color: #E38F00;\n  text-align: center;\n  cursor: pointer;\n  font-weight: 900;\n  border: none;\n  margin-top: 12px;\n  margin-bottom: 12px;\n}\n.mybutton:hover{\n  color: white;\n}\n.mybutton.small {\n  width: 120px;\n}\n\n", ""]);
 
 /***/ }),
 /* 42 */
@@ -15111,7 +15112,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 /***/ }),
 /* 47 */
@@ -35793,7 +35794,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.newDescription = $event.target.value
       }
     }
-  }), _vm._v("\n            Tags:\n            "), _c('textarea', {
+  }), _vm._v(" "), _c('p', [_vm._v("Tags:")]), _vm._v(" "), _c('textarea', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -35835,8 +35836,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "disabled": "",
       "value": ""
     }
-  }, [_vm._v("Pick a type")]), _vm._v(" "), _c('option', [_vm._v("Top")]), _vm._v(" "), _c('option', [_vm._v("Bottom")]), _vm._v(" "), _c('option', [_vm._v("Footwear")])]), _vm._v(" "), _c('button', {
-    staticClass: "btn",
+  }, [_vm._v("Pick a type")]), _vm._v(" "), _c('option', [_vm._v("Top")]), _vm._v(" "), _c('option', [_vm._v("Bottom")]), _vm._v(" "), _c('option', [_vm._v("Footwear")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
+    staticClass: "mybutton small",
     on: {
       "click": function($event) {
         _vm.addItem()
