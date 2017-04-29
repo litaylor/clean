@@ -24,4 +24,4 @@ git clone https://github.com/litaylor/virtual-closet.git
 
 ## Documentation
 
-Read the entire Clean API Reference at https://www.gitbook.com/book/litaylor/clean-api-documentation/details.
+Read the entire Clean API Reference at https://www.gitbook.com/book/litaylor/clean-app-api-documentation/.
